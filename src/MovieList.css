@@ -1,0 +1,17 @@
+.category-container {
+  margin-bottom: 20px;
+}
+
+.movies-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie {
+  flex: 0 0 calc(33.333% - 20px);
+  /* Adjust width as needed */
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+/* Adjust styles as needed */

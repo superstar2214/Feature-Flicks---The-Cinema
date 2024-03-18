@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStates } from './utilities/states';
 import { Link } from 'react-router-dom';
 import MovieFilterSortWidget from './MovieFilterSortWidget';
@@ -52,8 +52,18 @@ export default function MovieList() {
       if (!groupedMovies[category]) {
         groupedMovies[category] = [];
       }
-      groupedMovies[category].push(movie);
+      if (!groupedMovies[category].find(m => m.id === movie.id)) { // Check if movie already exists in the category
+        groupedMovies[category].push(movie);
+      }
     });
+    // If movie has no category, assign it to a default category
+    if (movie.description.categories.length === 0) {
+      const defaultCategory = 'Other';
+      if (!groupedMovies[defaultCategory]) {
+        groupedMovies[defaultCategory] = [];
+      }
+      groupedMovies[defaultCategory].push(movie);
+    }
   });
 
   // Render movie cards
@@ -64,38 +74,40 @@ export default function MovieList() {
         onFilterChange={handleFilterChange}
         onSortChange={handleSortChange}
       />
-      {Object.keys(groupedMovies).map(category => (
-        <div key={category} className="category-container">
-          <h2>{selectedCategory || category}</h2>
-          <div className="movies-container">
-            {groupedMovies[category].map(({ id, slug, title, description: d }) => {
-              // Find screenings for the current movie
-              const movieScreenings = screenings.filter(screening => screening.movieId === id); // Use movie id directly from movie data
-              // Sort screenings by time
-              movieScreenings.sort((a, b) => new Date(a.time) - new Date(b.time));
-              // Get the earliest screening time
-              const earliestScreening = movieScreenings.length > 0 ? new Date(movieScreenings[0].time) : null;
+      <div className="category-container">
+        {Object.keys(selectedCategory ? { [selectedCategory]: groupedMovies[selectedCategory] } : groupedMovies).map(category => (
+          <div key={category}>
+            <h2>{category}</h2>
+            <div className="movies-container">
+              {groupedMovies[category].map(({ id, slug, title, description: d }) => {
+                // Find screenings for the current movie
+                const movieScreenings = screenings.filter(screening => screening.movieId === id); // Use movie id directly from movie data
+                // Sort screenings by time
+                movieScreenings.sort((a, b) => new Date(a.time) - new Date(b.time));
+                // Get the earliest screening time
+                const earliestScreening = movieScreenings.length > 0 ? new Date(movieScreenings[0].time) : null;
 
-              return (
-                <Link key={slug} to={'/movie-detail/' + slug}>
-                  <div className="movie-card">
-                    <div className="movie-image">
-                      <img src={'https://cinema-rest.nodehill.se' + d.posterImage} alt={title} />
+                return (
+                  <Link key={slug} to={'/movie-detail/' + slug}>
+                    <div className="movie-card">
+                      <div className="movie-image">
+                        <img src={'https://cinema-rest.nodehill.se' + d.posterImage} alt={title} />
+                      </div>
+                      <div className="movie-info">
+                        <h3>{title}</h3>
+                        {earliestScreening && (
+                          <p>Earliest Screening: {earliestScreening.toLocaleString()}</p>
+                        )}
+                        <p>Movie Duration: {d.length} min</p>
+                      </div>
                     </div>
-                    <div className="movie-info">
-                      <h3>{title}</h3>
-                      {earliestScreening && (
-                        <p>Earliest Screening: {earliestScreening.toLocaleString()}</p>
-                      )}
-                      <p>Movie Duration: {d.length} min</p>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 }

@@ -70,3 +70,13 @@
   border-radius: 8px;
   /* Add border radius for rounded buttons */
 }
+
+.screenings-buttons {
+  margin-top: 20px;
+  /* Adjust this value as needed */
+}
+
+/* Center the word "Screenings" */
+.screenings-section h4 {
+  text-align: center;
+}

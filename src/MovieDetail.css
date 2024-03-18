@@ -1,0 +1,72 @@
+.movie-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* Stack items vertically */
+  height: auto;
+  /* Remove fixed height to allow content to expand */
+  padding: 40px;
+  /* Increase padding for spacing */
+}
+
+.movie-detail-card {
+  background-color: #fff;
+  padding: 40px;
+  /* Increase padding for spacing */
+  border-radius: 12px;
+  /* Increase border radius for rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  /* Increase box shadow for a more pronounced effect */
+}
+
+.movie-detail-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  /* Add border radius to images for rounded corners */
+}
+
+.movie-detail-card h3 {
+  font-size: 24px;
+  /* Increase font size for movie title */
+}
+
+.movie-detail-card h4 {
+  font-size: 18px;
+  /* Increase font size for movie details */
+}
+
+.auditorium-section {
+  text-align: center;
+  /* Center align the text */
+  margin-top: 20px;
+  /* Increase margin top for spacing */
+}
+
+.screening-time-button {
+  margin-right: 10px;
+  text-align: center;
+  /* Adjust the spacing as needed */
+}
+
+.auditorium-text {
+  font-size: 30px;
+  /* Increase font size for "Auditorium" text */
+}
+
+.auditorium-buttons {
+  margin-top: 20px;
+  /* Increase margin top for spacing */
+}
+
+.auditorium-buttons button {
+  margin: 0 10px;
+  /* Increase horizontal margin between buttons */
+  padding: 12px 24px;
+  /* Increase padding for larger buttons */
+  font-size: 16px;
+  /* Increase font size for buttons */
+  border-radius: 8px;
+  /* Add border radius for rounded buttons */
+}

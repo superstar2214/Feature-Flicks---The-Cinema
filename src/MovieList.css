@@ -7,11 +7,28 @@
   flex-wrap: wrap;
 }
 
-.movie {
-  flex: 0 0 calc(33.333% - 20px);
-  /* Adjust width as needed */
+.movie-card {
+  width: 300px;
+  /* Set card width */
   margin-right: 20px;
   margin-bottom: 20px;
+  border: 1px solid #ddd;
+  /* Add border */
+  border-radius: 5px;
+  /* Add border radius */
+  overflow: hidden;
+  /* Hide overflow content */
+  overflow: hidden;
+  color: white;
+}
+
+.movie-image img {
+  width: 100%;
+  /* Make image responsive */
+}
+
+.movie-info {
+  padding: 10px;
 }
 
 /* Adjust styles as needed */

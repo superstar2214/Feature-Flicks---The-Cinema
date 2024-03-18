@@ -29,7 +29,7 @@ function MovieFilterSortWidget({ categories, selectedCategory, onFilterChange, o
         <option value="">None</option>
         <option value="title">Title</option>
         <option value="length">Length</option>
-        {/* Add more sorting options as needed */}
+        <option value="screening">Screening</option>
       </select>
     </div>
   );

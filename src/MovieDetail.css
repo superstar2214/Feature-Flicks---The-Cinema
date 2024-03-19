@@ -80,3 +80,8 @@
 .screenings-section h4 {
   text-align: center;
 }
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+}

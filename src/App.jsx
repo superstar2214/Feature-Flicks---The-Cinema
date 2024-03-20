@@ -13,13 +13,10 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      // fetch alll movies from the REST api
       let movies = await (await fetch('/api/movies')).json();
-      // add a slug to be used in url routes to each movie
       for (let movie of movies) {
         movie.slug = kebabify(movie.title);
       }
-      // store the movies in our state variable
       s.movies = movies;
     })();
   }, []);

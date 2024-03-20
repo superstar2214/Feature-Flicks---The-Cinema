@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
-const TicketComponent = ({ availableSeats, bookingCounter }) => {
+const TicketComponent = ({ availableSeats, bookingCounter, onSeatClick }) => {
   const [normalTickets, setNormalTickets] = useState(0);
   const [seniorTickets, setSeniorTickets] = useState(0);
   const [childTickets, setChildTickets] = useState(0);
-  const [totalTickets, setTotalTickets] = useState(0); // New state to track total tickets
+  const [totalTickets, setTotalTickets] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [bookingNumber, setBookingNumber] = useState(null);
 
   const normalPrice = 85;
   const seniorPrice = 75;
@@ -24,7 +26,7 @@ const TicketComponent = ({ availableSeats, bookingCounter }) => {
       default:
         break;
     }
-    setTotalTickets(totalTickets + 1); // Increment total tickets when increasing a ticket type
+    setTotalTickets(totalTickets + 1);
   };
 
   const decreaseTickets = (type) => {
@@ -32,24 +34,34 @@ const TicketComponent = ({ availableSeats, bookingCounter }) => {
       case 'normal':
         if (normalTickets > 0) {
           setNormalTickets(normalTickets - 1);
-          setTotalTickets(totalTickets - 1); // Decrement total tickets when decreasing a ticket type
+          setTotalTickets(totalTickets - 1);
         }
         break;
       case 'senior':
         if (seniorTickets > 0) {
           setSeniorTickets(seniorTickets - 1);
-          setTotalTickets(totalTickets - 1); // Decrement total tickets when decreasing a ticket type
+          setTotalTickets(totalTickets - 1);
         }
         break;
       case 'child':
         if (childTickets > 0) {
           setChildTickets(childTickets - 1);
-          setTotalTickets(totalTickets - 1); // Decrement total tickets when decreasing a ticket type
+          setTotalTickets(totalTickets - 1);
         }
         break;
       default:
         break;
     }
+  };
+
+  const generateBookingNumber = () => {
+    const randomString = Math.random().toString(36).substring(7).toUpperCase();
+    setBookingNumber(randomString);
+  };
+
+  const handleBook = () => {
+    generateBookingNumber();
+    setShowPopup(true);
   };
 
   return (
@@ -78,8 +90,17 @@ const TicketComponent = ({ availableSeats, bookingCounter }) => {
           <span>Total: SEK {childTickets * childPrice}</span>
         </div>
       </div>
-      {totalTickets === bookingCounter && totalTickets > 0 && ( // Render "Book" button conditionally
-        <button className="book-button">Book</button>
+      {totalTickets === bookingCounter && totalTickets > 0 && (
+        <button className="book-button" onClick={handleBook}>Book</button>
+      )}
+
+      {showPopup && (
+        <div className="popup">
+          <h2>Your booking</h2>
+          <p>Booking number: {bookingNumber}</p>
+          <p>Total price: {totalTickets * normalPrice} kr</p>
+          <button onClick={() => setShowPopup(false)}>Close</button>
+        </div>
       )}
     </div>
   );

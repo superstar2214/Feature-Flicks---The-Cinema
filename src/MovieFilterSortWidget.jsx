@@ -1,4 +1,3 @@
-// MovieFilterSortWidget.js
 import React, { useState } from 'react';
 
 function MovieFilterSortWidget({ categories, selectedCategory, onFilterChange, onSortChange }) {

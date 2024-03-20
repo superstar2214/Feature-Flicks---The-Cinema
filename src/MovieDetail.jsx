@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useStates } from './utilities/states';
-import TicketComponent from './TicketComponent'; // Import the TicketComponent
-import './MovieDetail.css'; // Import CSS for styling
+import TicketComponent from './TicketComponent';
+import './MovieDetail.css';
 
 export default function MovieDetail() {
   const { slug } = useParams();
@@ -14,9 +14,8 @@ export default function MovieDetail() {
   const [screenings, setScreenings] = useState([]);
   const [occupiedSeats, setOccupiedSeats] = useState([]);
   const [seats, setSeats] = useState([]);
-  const [bookingCounter, setBookingCounter] = useState(0); // New state to track booking count
+  const [bookingCounter, setBookingCounter] = useState(0);
 
-  // Calculate the number of available grey seats
   const availableSeats = seats.reduce((total, row) => {
     return total + row.filter(seat => !occupiedSeats.includes(seat.seatNumber)).length;
   }, 0);
@@ -36,15 +35,14 @@ export default function MovieDetail() {
 
   const handleClick = (seatNumber) => {
     if (occupiedSeats.includes(seatNumber)) {
-      // Unbook the seat and decrement the counter
       setOccupiedSeats(occupiedSeats.filter(seat => seat !== seatNumber));
       setBookingCounter(prevCounter => prevCounter - 1);
     } else {
-      // Book the seat and increment the counter
       setOccupiedSeats([...occupiedSeats, seatNumber]);
       setBookingCounter(prevCounter => prevCounter + 1);
     }
   };
+
 
   const handleScreeningClick = async (screeningId) => {
     try {
@@ -126,7 +124,7 @@ export default function MovieDetail() {
           ))}
         </div>
       </div>
-      <TicketComponent availableSeats={availableSeats} bookingCounter={bookingCounter} /> {/* Integrate TicketComponent here */}
+      <TicketComponent availableSeats={availableSeats} bookingCounter={bookingCounter} /> { }
     </div>
   );
 }

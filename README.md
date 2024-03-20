@@ -15,6 +15,7 @@ Fetches screenings data from the REST API and organizes movies by categories.
 Displays movie cards with basic information like title, image, and earliest screening time.
 Allows users to filter movies by category and sort them by title or duration.
 <img width="1428" alt="Screenshot 2024-03-20 at 22 48 00" src="https://github.com/superstar2214/Feature-Flicks---The-Cinema/assets/90936619/aa130c13-de1d-417b-9a03-0036d070a419">
+
 4. MovieDetail Component:
 The MovieDetail component displays detailed information about a selected movie.
 Fetches screenings data based on the selected auditorium.

@@ -1,5 +1,6 @@
 To use:
 npm install
+
 npm run dev
 
 Components:
@@ -29,6 +30,8 @@ The TicketComponent component manages the selection and booking of movie tickets
 Provides options to select the number of tickets for different categories (normal, senior, child).
 Calculates the total price based on the selected number of tickets and respective prices.
 Allows users to book tickets, and upon booking, displays a popup with the booking details.
+<img width="538" alt="Screenshot 2024-03-20 at 23 05 18" src="https://github.com/superstar2214/Feature-Flicks---The-Cinema/assets/90936619/00c3ef10-3e97-4eac-aeaf-2b2924db4862">
+
 5. MovieFilterSortWidget Component:
 The MovieFilterSortWidget component provides UI elements for filtering and sorting movies.
 Allows users to filter movies by category and sort them by title or duration.

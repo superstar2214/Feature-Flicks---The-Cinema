@@ -10,7 +10,7 @@ The App component serves as the main entry point of the application.
 It handles the routing using react-router-dom.
 Fetches movies data from the REST API and stores them in the application state.
 Renders MovieList and MovieDetail components based on the current route.
-2. MovieList Component:
+3. MovieList Component:
 The MovieList component displays a list of movies available for screening.
 Utilizes the MovieFilterSortWidget component for filtering and sorting movies.
 Fetches screenings data from the REST API and organizes movies by categories.
@@ -18,7 +18,7 @@ Displays movie cards with basic information like title, image, and earliest scre
 Allows users to filter movies by category and sort them by title or duration.
 <img width="1428" alt="Screenshot 2024-03-20 at 22 48 00" src="https://github.com/superstar2214/Feature-Flicks---The-Cinema/assets/90936619/aa130c13-de1d-417b-9a03-0036d070a419">
 
-3. MovieDetail Component:
+4. MovieDetail Component:
 The MovieDetail component displays detailed information about a selected movie.
 Fetches screenings data based on the selected auditorium.
 Displays screening times for the selected movie.
@@ -26,22 +26,22 @@ Allows users to select seats for booking.
 Integrates the TicketComponent for managing ticket selection and booking.
 <img width="711" alt="Screenshot 2024-03-20 at 23 01 46" src="https://github.com/superstar2214/Feature-Flicks---The-Cinema/assets/90936619/3842ba69-50de-4aae-8212-6788edd5d844">
 
-4. TicketComponent Component:
+5. TicketComponent Component:
 The TicketComponent component manages the selection and booking of movie tickets.
 Provides options to select the number of tickets for different categories (normal, senior, child).
 Calculates the total price based on the selected number of tickets and respective prices.
 Allows users to book tickets, and upon booking, displays a popup with the booking details.
 <img width="538" alt="Screenshot 2024-03-20 at 23 05 18" src="https://github.com/superstar2214/Feature-Flicks---The-Cinema/assets/90936619/00c3ef10-3e97-4eac-aeaf-2b2924db4862">
 
-5. MovieFilterSortWidget Component:
+6. MovieFilterSortWidget Component:
 The MovieFilterSortWidget component provides UI elements for filtering and sorting movies.
 Allows users to filter movies by category and sort them by title or duration.
 Renders dropdowns for selecting category and sorting options.
 Sends filter and sort options to the parent component for handling.
-6. TicketComponent.css:
+7. TicketComponent.css:
 Contains CSS styles for the TicketComponent component.
 Defines styles for the ticket selection interface and the booking popup.
-7. Other Utility Components and CSS:
+8. Other Utility Components and CSS:
 Contains other utility components like auto-key-lists.js for generating unique keys for lists.
 Contains CSS files for styling different components like MovieList.css and MovieDetail.css.
 Conclusion:
